@@ -16,7 +16,7 @@ export const metadata = {
   title: "CryptoWeather Nexus",
   description: "",
   icons: {
-    icon: "/favicon.ico",
+    icon: "/icon.svg",
     apple: "/apple-touch-icon.png",
   },
 };

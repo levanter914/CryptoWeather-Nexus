@@ -43,7 +43,7 @@ const TrendingCoins = () => {
 
   return (
     <div className="relative top-6 w-full">
-        <h2 className="text-2xl font-semibold mb-4 px-6">📊 Market Trends</h2>
+        <h2 className="text-2xl font-semibold mb-4 px-6">📈 Market Trends</h2>
 
         <div className="w-full">
             {topCoins.length > 0 ? (
@@ -60,7 +60,7 @@ const TrendingCoins = () => {
                 {topCoins.map((coin, index) => (
                 <div
                     key={coin.id + index}
-                    className="card bg-[#f8f9fa] border-2 border-black rounded-xl shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition duration-300 p-4 w-[95%] sm:w-[90%] md:w-72"
+                    className="card bg-[#ffffff] border-2 border-black rounded-xl shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition duration-300 p-4 w-[95%] sm:w-[90%] md:w-72"
                 >
                     <Link href={`/${coin.id}`} className="block">
                     <div className="flex items-center gap-4 mb-4">

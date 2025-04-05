@@ -26,7 +26,7 @@ body {
 }
 
 .text-shadow-subtle {
-  text-shadow: 4px 6px 2px rgba(69, 124, 217, 0.5);
+  text-shadow: 4px 6px 3px rgba(0, 0, 0, 55%);
 }
 
 .card-thumbnail {
@@ -40,3 +40,78 @@ body {
   font-weight: 600;
   font-style: normal;
 }
+
+.spotlight-container,
+.spotlight-container * {
+  cursor: none;
+}
+
+.shapes {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  background: #0077B6;
+  overflow: hidden;
+}
+
+.shape {
+  position: absolute;
+  border-radius: 50%;
+  will-change: transform;
+  transform: translate(0, 0); 
+}
+
+
+.shape-1 {
+  background: #53d29f;
+  width: 650px;
+  height: 650px;
+  margin: -325px 0 0 -325px;
+}
+
+.shape-2 {
+  background: #f4a7a2;
+  width: 440px;
+  height: 440px;
+  margin: -220px 0 0 -220px;
+}
+
+.shape-3 {
+  background: #ffcc57;
+  width: 270px;
+  height: 270px;
+  margin: -135px 0 0 -135px;
+}
+
+.content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+  mix-blend-mode: screen;
+  pointer-events: none;
+  z-index: 50; 
+}
+
+
+.cursor {
+  position: fixed;
+  background: #2128bd;
+  width: 20px;
+  height: 20px;
+  margin: -10px 0 0 -10px;
+  border-radius: 50%;
+  will-change: transform;
+  user-select: none;
+  pointer-events: none;
+  z-index: 10000;
+  mix-blend-mode: screen;
+  transition: transform 0.05s ease-out;
+}
+
+

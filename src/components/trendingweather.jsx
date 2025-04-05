@@ -40,7 +40,7 @@ const TrendingWeather = () => {
 
   return (
     <div className="relative top-6 px-4">
-      <h2 className="text-2xl font-semibold mb-4 ml-4">🌦 Trending Weather</h2>
+      <h2 className="text-2xl font-semibold mb-4 ml-4">⛅ Trending Weather</h2>
       {weatherData.length > 0 ? (
         <AliceCarousel
           mouseTracking

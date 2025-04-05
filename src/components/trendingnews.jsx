@@ -10,12 +10,15 @@ const TrendingNews = () => {
   const [articles, setArticles] = useState([]);
 
   const fetchCryptoNews = async () => {
+    const apiKey = process.env.NEXT_PUBLIC_NEWSDATA_API_KEY; 
     try {
       const response = await axios.get("https://newsdata.io/api/1/latest", {
+        headers: {
+          "X-ACCESS-KEY": apiKey, 
+        },
         params: {
           q: "crypto",
           language: "en",
-          apikey: process.env.NEXT_PUBLIC_NEWSDATA_API_KEY,
         },
       });
 

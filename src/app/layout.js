@@ -16,8 +16,8 @@ export const metadata = {
   title: "CryptoWeather Nexus",
   description: "",
   icons: {
-    icon: "/icon.svg",
-    apple: "/apple-touch-icon.png",
+    icon: "/icons/favicon.ico",
+    apple: "/icons/apple-touch-icon.png",
   },
 };
 
@@ -39,6 +39,7 @@ export default function RootLayout({ children }) {
           href="https://fonts.googleapis.com/css2?family=Lexend+Mega:wght@100..900&display=swap"
           rel="stylesheet"
         />
+          <link rel="icon" href="/favicon.ico" />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}

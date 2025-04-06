@@ -1,13 +1,16 @@
-// /pages/city-details.js
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
+import Lottie from "lottie-react";
 
 const CityDetails = () => {
   const [city, setCity] = useState("");
   const [weatherData, setWeatherData] = useState(null);
   const [error, setError] = useState("");
+  const [animationData, setAnimationData] = useState(null);
+  const resultRef = useRef(null);
+  const inputRef = useRef(null);
 
   const fetchWeatherData = async (e) => {
     e.preventDefault();
@@ -26,28 +29,84 @@ const CityDetails = () => {
     }
   };
 
+  // Load animation based on time (is_day = 1 or 0)
+  useEffect(() => {
+    const loadAnimation = async () => {
+      if (!weatherData) return;
+      const isDay = weatherData.current.is_day;
+      const animPath = isDay ? "/animations/day.json" : "/animations/night.json";
+      const res = await fetch(animPath);
+      const data = await res.json();
+      setAnimationData(data);
+
+      // Smooth scroll to result
+      setTimeout(() => {
+        resultRef.current?.scrollIntoView({ behavior: "smooth" });
+      }, 100);
+    };
+
+    loadAnimation();
+  }, [weatherData]);
+
+  // Autofocus input
+  useEffect(() => {
+    inputRef.current?.focus();
+  }, []);
+
   return (
-    <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4">City Weather Details</h1>
-      <form onSubmit={fetchWeatherData} className="mb-4">
+    <div className="min-h-screen bg-gradient-to-b from-white to-[#caf0f8] px-6 pt-32 pb-12 flex flex-col items-center">
+      <h1 className="text-5xl sm:text-6xl text-[#0077b6] font-extrabold mb-12 text-center">
+        🌧️ City Weather Details 🌤️
+      </h1>
+
+      <form
+        onSubmit={fetchWeatherData}
+        className="flex flex-col sm:flex-row items-center gap-4 mb-8"
+      >
         <input
+          ref={inputRef}
           type="text"
           value={city}
           onChange={(e) => setCity(e.target.value)}
           placeholder="Enter city name"
-          className="border rounded p-2"
+          className="nb-input default p-3 w-64 text-center text-lg bg-white shadow-md rounded border border-black"
         />
-        <button type="submit" className="bg-blue-500 text-white rounded px-4 py-2 ml-2">
+        <button type="submit" className="nb-button blue rounded px-6 py-2 text-lg">
           Search
         </button>
       </form>
-      {error && <p className="text-red-500">{error}</p>}
+
+      {error && <p className="text-red-600 font-semibold">{error}</p>}
+
       {weatherData && (
-        <div className="weather-info">
-          <h2 className="text-xl font-bold">{weatherData.location.name}</h2>
-          <p>Temperature: {weatherData.current.temp_c}°C</p>
-          <p>Condition: {weatherData.current.condition.text}</p>
-          <img src={weatherData.current.condition.icon} alt={weatherData.current.condition.text} />
+        <div
+          ref={resultRef}
+          className="card mt-4 w-[26rem] text-left transition-all duration-500 ease-in-out shadow-lg hover:shadow-xl bg-white rounded-lg overflow-hidden"
+        >
+          <a href="#" className="no-underline text-black">
+            <div className="card-thumbnail flex justify-center items-center pt-4">
+              {animationData && (
+                <Lottie animationData={animationData} className="w-40 h-40" loop={true} />
+              )}
+            </div>
+            <div className="card-content p-4">
+              <div className="text-sm text-gray-500 mb-2">
+                Last Updated: {weatherData.current.last_updated}
+              </div>
+              <p className="text-xl font-bold mb-2">
+                🌆 {weatherData.location.name}, {weatherData.location.country}
+              </p>
+              <p className="mb-1">
+                🌡 Temperature: <strong>{weatherData.current.temp_c}°C</strong>
+              </p>
+              <p className="mb-1">
+                🌤 Condition: <strong>{weatherData.current.condition.text}</strong>
+              </p>
+              <p className="mt-2 text-blue-600">
+                <strong>Stay prepared !!</strong>
+              </p>
+            </div>
+          </a>
         </div>
       )}
     </div>

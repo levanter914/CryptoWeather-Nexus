@@ -4,6 +4,8 @@ import { gsap } from "gsap";
 import TrendingCoins from "@/components/trendingcoins";
 import TrendingWeather from "@/components/trendingweather";
 import TrendingNews from "@/components/trendingnews";
+import CryptoTable from "@/components/cryptotable";
+
 
 const Page = () => {
   useEffect(() => {
@@ -71,9 +73,14 @@ const Page = () => {
         <TrendingWeather />
       </div>
 
-      <div className="w-full max-w-7xl z-10 pt-12 pb-32 px-4 sm:px-0">
+      <div className="w-full max-w-7xl z-10 pt-12 px-4 sm:px-0">
         <TrendingNews />
       </div>
+
+      <div className="w-full max-w-7xl z-10 pt-12 pb-32 px-4 sm:px-0">
+        <CryptoTable />
+      </div>
+
     </div>
   );
 };

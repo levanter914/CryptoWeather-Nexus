@@ -18,8 +18,8 @@ Live data. Smooth navigation. Tailored for modern web.
 
 ![Main Dashboard](./pic1.png)
 <p float="left">
-  <img src="./pic2.png" width="50%" />
-  <img src="./pic3.png" width="50%" />
+  <img src="./pic2.png" width="49%" />
+  <img src="./pic3.png" width="49%" />
 </p>
 
 <p float="left">

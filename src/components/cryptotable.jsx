@@ -45,11 +45,10 @@ const CryptoTable = () => {
       showToast('Already in favourites!');
       return;
     }
-  
+
     dispatch(favouritesActions.addToFavourites(coin));
     showToast('Added to favourites!');
   };
-  
 
   const removeFromFavHandler = (coin) => {
     dispatch(favouritesActions.removeFromFavourites(coin));
@@ -129,7 +128,7 @@ const CryptoTable = () => {
                   <td className="p-2">{coin.price_change_percentage_24h.toFixed(2)}%</td>
                   <td className="p-2 flex gap-2">
                     <AiOutlineStar
-                      className="cursor-pointer text-yellow-400  text-2xl"
+                      className="cursor-pointer text-yellow-400 text-2xl"
                       onClick={() => addToFavouritesHandler(coin)}
                     />
                     <AiFillDelete
@@ -163,7 +162,7 @@ const CryptoTable = () => {
 
       {/* Favourites Drawer (Slide In Panel) */}
       <div
-        className={`fixed top-0 right-0 h-full w-80 bg-white shadow-lg p-4 z-50 transition-transform duration-300 ${
+        className={`fixed top-0 right-0 h-full w-80 bg-white shadow-lg p-4 z-[100] transform transition-transform duration-300 ${
           showDrawer ? 'translate-x-0' : 'translate-x-full'
         }`}
       >

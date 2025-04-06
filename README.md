@@ -1,4 +1,3 @@
-```markdown
 # 🌩️ CryptoWeather Nexus
 
 **CryptoWeather Nexus** is a modern, multi-page dashboard built with Next.js App Router that fuses real-time **cryptocurrency trends** with **weather insights** — all wrapped in a responsive, clean UI.
@@ -118,5 +117,3 @@ Feel free to connect or reach out!
 ---
 
 Made with 💙 and a little obsession for beautiful css libraries.
-
-```

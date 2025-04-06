@@ -87,7 +87,7 @@ npm run dev
 |---------------------------------------|-------------------------------------------------------------------------|
 | CoinCap v3 migration (from v2)        | Updated endpoints and added authentication via headers                 |
 | Combining crypto + weather seamlessly | Created a unified layout using `layout.js` and shared components       |
-| Mobile responsiveness                  | Used Tailwind’s responsive utilities and tested across devices         |
+| Mobile responsiveness                 | Used Tailwind’s responsive utilities and tested across devices         |
 
 ---
 
@@ -118,4 +118,5 @@ Feel free to connect or reach out!
 ---
 
 Made with 💙 and a little obsession for beautiful css libraries.
+
 ```

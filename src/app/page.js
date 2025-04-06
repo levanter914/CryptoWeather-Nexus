@@ -10,16 +10,16 @@ import CryptoTable from "@/components/cryptotable";
 const Page = () => {
   useEffect(() => {
     const cursor = document.getElementById("cursor");
-
+  
     const moveShapes = (e) => {
       const mouseX = e.clientX;
       const mouseY = e.clientY;
-
+  
       gsap.set(cursor, {
         x: mouseX,
         y: mouseY,
       });
-
+  
       gsap.to(".shape", {
         x: mouseX,
         y: mouseY,
@@ -27,10 +27,25 @@ const Page = () => {
         ease: "power2.out",
       });
     };
-
+  
     document.body.addEventListener("mousemove", moveShapes);
-    return () => document.body.removeEventListener("mousemove", moveShapes);
+  
+    // 👇 Handle outside click to close favorite bar
+    const handleOutsideClick = (e) => {
+      const favBar = document.getElementById("favorite-bar");
+      if (favBar && !favBar.contains(e.target)) {
+        favBar.classList.remove("open"); // or add `hidden` or toggle visibility however you're doing it
+      }
+    };
+  
+    document.addEventListener("mousedown", handleOutsideClick);
+  
+    return () => {
+      document.body.removeEventListener("mousemove", moveShapes);
+      document.removeEventListener("mousedown", handleOutsideClick);
+    };
   }, []);
+
 
   return (
     <div className="spotlight-container cursor-none relative flex flex-col items-center justify-start min-h-screen overflow-x-hidden bg-white px-4 sm:px-6 md:px-8">
